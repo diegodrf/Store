@@ -1,6 +1,7 @@
 # Project
 fastapi
 sqlmodel
+psycopg2
 
 # Aditional
 sqlalchemy

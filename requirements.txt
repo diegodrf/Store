@@ -1,0 +1,10 @@
+# Project
+fastapi
+sqlmodel
+
+# Aditional
+sqlalchemy
+
+# WSGI
+gunicorn
+uvicorn

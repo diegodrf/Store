@@ -14,6 +14,9 @@ if not ECHO_MODE:
     connect_args['sslmode'] = 'require'
     echo = False
 
+if not DEVELOPMENT_MODE:
+    DATABASE_URL.replace('postgres://', 'postgresql+psycopg2://')
+
 
 engine = create_engine(
     url=DATABASE_URL,

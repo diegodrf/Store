@@ -14,7 +14,7 @@ if not ECHO_MODE:
     echo = False
 
 if not DEVELOPMENT_MODE:
-    DATABASE_URL.replace('postgres://', 'postgresql+psycopg2://')
+    DATABASE_URL = DATABASE_URL.replace('postgres://', 'postgresql+psycopg2://')
     sys.stdout.write(f'>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> {DATABASE_URL}')
 
 

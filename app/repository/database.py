@@ -3,7 +3,6 @@ from sqlmodel import create_engine
 import sys
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
-sys.stdout.write(f'>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> {DATABASE_URL}')
 ECHO_MODE = os.environ.get('ECHO_MODE')
 DEVELOPMENT_MODE = os.environ.get('DEVELOPMENT_MODE', None)
 
@@ -16,6 +15,7 @@ if not ECHO_MODE:
 
 if not DEVELOPMENT_MODE:
     DATABASE_URL.replace('postgres://', 'postgresql+psycopg2://')
+    sys.stdout.write(f'>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> {DATABASE_URL}')
 
 
 engine = create_engine(

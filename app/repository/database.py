@@ -1,9 +1,11 @@
 import os
 from sqlmodel import create_engine
+import sys
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
+sys.stdout.write(f'>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> {DATABASE_URL}')
 ECHO_MODE = os.environ.get('ECHO_MODE')
-DEVELOPMENT_MODE = os.environ.get('DEVELOPMENT_MODE')
+DEVELOPMENT_MODE = os.environ.get('DEVELOPMENT_MODE', None)
 
 echo = True
 connect_args = {}

@@ -4,12 +4,6 @@ from typing import List, Optional
 from uuid import uuid4, UUID
 
 
-def add_a_future_date() -> date:
-    today = date.today()
-    tomorrow = today + timedelta(1)
-    return tomorrow
-
-
 class BrandBase(SQLModel):
     name: str = Field(index=True)
 
@@ -22,7 +16,7 @@ class Brand(BrandBase, table=True):
 
 class ProductBase(SQLModel):
     name: str
-    description: Optional[str]
+    description: Optional[str] = Field(default=None)
 
 
 class Product(ProductBase, table=True):
@@ -36,7 +30,7 @@ class Product(ProductBase, table=True):
 
 
 class PriceBase(SQLModel):
-    initial_validity_date: Optional[date] = Field(default_factory=add_a_future_date)
+    initial_validity_date: date = Field(default_factory=date.today)
     amount: int
 
 
@@ -64,6 +58,10 @@ class ProductBasicResponse(ProductBase):
     id: UUID
 
 
+class PriceResponse(PriceBase):
+    id: UUID
+    final_validity_date: Optional[date] = None
+
 # Complex Responses
 
 
@@ -73,10 +71,9 @@ class ProductBasicWithBrandResponse(ProductBase):
 
 
 class ProductDetailedResponse(ProductBase):
-    pass
     id: UUID
     brand: BrandBasicResponse
-    prices: List[Price]
+    prices: List[PriceResponse]
 
 
 class BrandDetailedResponse(BrandBase):

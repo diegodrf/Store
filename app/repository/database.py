@@ -14,9 +14,11 @@ if not ECHO_MODE:
     echo = False
 
 if not DEVELOPMENT_MODE:
+    """
+        This is necessary because the default connection string from Heroku is not recognized by 
+        SQLAlchemy create_engine()  
+    """
     DATABASE_URL = DATABASE_URL.replace('postgres://', 'postgresql+psycopg2://')
-    sys.stdout.write(f'>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> {DATABASE_URL}')
-
 
 engine = create_engine(
     url=DATABASE_URL,

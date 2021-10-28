@@ -4,6 +4,9 @@ from .repository.database import DEVELOPMENT_MODE
 from . import helpers
 
 app = FastAPI(
+    title='Store API',
+    description='This is a simple project using FastAPI with a CRUD.',
+    version='0.0.1',
     docs_url='/'
 )
 

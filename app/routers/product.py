@@ -108,7 +108,10 @@ async def create_product_price(
         session: Session = Depends(dependencies.get_session)
 ):
     if price_request.initial_validity_date <= date.today():
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail='Initial validity date must a future date')
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail='Initial validity date must a future date.'
+        )
 
     product = session.exec(
         select(

@@ -3,6 +3,7 @@ from sqlmodel import create_engine
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
 ECHO_MODE = os.environ.get('ECHO_MODE')
+DEVELOPMENT_MODE = os.environ.get('DEVELOPMENT_MODE')
 
 echo = True
 connect_args = {}

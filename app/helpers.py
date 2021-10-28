@@ -1,10 +1,14 @@
 from sqlmodel import SQLModel, Session
 from .repository.database import engine
 from .repository.models import model
+import sys
 
 
 def create_tables_if_not_exists() -> None:
-    SQLModel.metadata.create_all(engine)
+    try:
+        SQLModel.metadata.create_all(engine)
+    except Exception as e:
+        sys.stderr.write(str(e))
 
 
 def drop_tables() -> None:
